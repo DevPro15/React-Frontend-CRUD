@@ -5,26 +5,24 @@ import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 //components
 import Data from "../../Data";
-//uuid generator
-import { v4 as uuid } from "uuid";
 
 //Edit Form Function
 function EditForm() {
+  //State
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [id, setId] = useState("");
-
+  //navigte
   let history = useNavigate();
+  //grabs the index
+  var index = Data.map(function (e) {
+    return e.id;
+  }).indexOf(id);
 
-
-
+  // update's the value
   const handleSubmit = (e) => {
-      e.preventDefault();
-        var index = Data.map(function (e) {
-          return e.id;
-        }).indexOf(id);
-
+    e.preventDefault();
     let a = Data[index];
     a.title = title;
     a.description = description;
@@ -33,6 +31,7 @@ function EditForm() {
     history("/");
   };
 
+  //fetch the value on input
   useEffect(() => {
     setTitle(localStorage.getItem("title"));
     setDescription(localStorage.getItem("description"));

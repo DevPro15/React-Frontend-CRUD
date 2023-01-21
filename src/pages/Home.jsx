@@ -26,7 +26,7 @@ const StyledBox = styled(Box)({
 const Home = () => {
   //Navigation
   let history = useNavigate();
-  //Edit Function
+  //Set's the value in localstorage
   const handleEdit = (id, title, description, image) => {
     localStorage.setItem("title", title);
     localStorage.setItem("description", description);
